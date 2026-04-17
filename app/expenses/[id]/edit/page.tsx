@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { parseYyyyMmDdToDateOnly } from "@/lib/dateOnly";
+
+export const dynamic = "force-dynamic";
 import { Category } from "@prisma/client";
 
 function formatDateOnly(d: Date) {

@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import { parseYyyyMmDdToDateOnly } from "@/lib/dateOnly";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 function kstMonth(): string {
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Seoul",

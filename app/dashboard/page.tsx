@@ -2,6 +2,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { DashboardCharts } from "./DashboardCharts";
 
+export const dynamic = "force-dynamic";
+
 function formatWon(n: number) {
   return n.toLocaleString("ko-KR");
 }
