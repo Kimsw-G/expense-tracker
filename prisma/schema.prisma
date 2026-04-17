@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  FOOD
+  CAFE
+  TRANSPORT
+  SHOPPING
+  ETC
+}
+
+enum Source {
+  KAKAO
+  WEB
+  FIXED
+}
+
+model Expense {
+  id         String   @id @default(cuid())
+  occurredOn DateTime @db.Date  // YYYY-MM-DD only
+  amount     Int
+
+  merchant   String?
+  memo       String?
+  category   Category @default(FOOD) // 네 규칙: merchant 없으면 FOOD, 웹에서 수정 가능
+  rawText    String
+  source     Source  @default(KAKAO)
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([occurredOn])
+  @@index([category, occurredOn])
+}
+
+model FixedExpenseTemplate {
+  id        String   @id @default(cuid())
+  name      String   // 예: 월세, 넷플릭스, 통신비
+  amount    Int
+  memo      String?
+  isActive  Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
