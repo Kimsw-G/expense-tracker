@@ -64,7 +64,16 @@ export function DashboardCharts(props: {
                 dataKey="sum"
                 nameKey="category"
                 outerRadius={95}
-                label={(d) => `${d.category} (${Math.round((d.sum / Math.max(1, byCategory.reduce((a, b) => a + b.sum, 0))) * 100)}%)`}
+                label={(props) => {
+                  const payload = props.payload as { category?: string; sum?: number } | undefined;
+                  const category = payload?.category ?? "";
+                  const sum = payload?.sum ?? 0;
+
+                  const total = Math.max(1, byCategory.reduce((a, b) => a + b.sum, 0));
+                  const pct = Math.round((sum / total) * 100);
+
+                  return `${category} (${pct}%)`;
+                }}
               >
                 {byCategory.map((_, idx) => (
                   <Cell key={idx} fill={PIE_COLORS[idx % PIE_COLORS.length]} />
