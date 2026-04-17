@@ -89,7 +89,6 @@ export default function NewExpensePage() {
               <option value="TRANSPORT">교통</option>
               <option value="SHOPPING">쇼핑</option>
               <option value="ETC">기타</option>
-              <option value="FIXED">고정</option>
             </select>
           </div>
 
