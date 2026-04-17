@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import "./globals.css";
 import Toast from "./components/Toast";
-import ToastListener from "./components/ToastFromQuery";
+import ToastFromQuery from "./components/ToastFromQuery";
 
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         <Toast />
         <Suspense fallback={null}>
-          <ToastListener />
+          <ToastFromQuery />
         </Suspense>
         <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">{children}</main>
       </body>

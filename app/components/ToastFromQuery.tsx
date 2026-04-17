@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast, type ToastLevel } from "@/lib/toast";
 
-export default function ToastListener() {
+export default function ToastFromQuery() {
   const params = useSearchParams();
   const router = useRouter();
 
